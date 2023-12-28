@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-    finUsers,
+    findUsers,
     findUser,
     deleteUser,
     createUser,
@@ -10,7 +10,7 @@ import {
 
 const router = Router();
 
-router.get("/", finUsers);
+router.get("/", findUsers);
 router.get("/:idUser", findUser);
 router.delete("/:idUser", deleteUser);
 router.post("/", createUser);

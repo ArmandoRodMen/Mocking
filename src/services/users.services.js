@@ -2,7 +2,7 @@ import { usersDao } from "../DAL/DAO/mongodb/users.dao.js";
 import { hashData } from "../utils.js";
 
 export const findAll = async () => {
-    const users = await usersDao.getAll();
+    const users = await usersDao.findAll();
     return users;
 };
 

@@ -9,6 +9,8 @@ import {
     sigOut,
     restore
 } from "../services/sessions.services.js";
+import CustomError from "../errors/error.generator.js";
+import { ErrorMessages } from "../errors/errors.enum.js";
 
 export const create= async (req, res) => {
     const { first_name, last_name, email, password, username } = req.body;
@@ -28,7 +30,12 @@ export const create= async (req, res) => {
         
         res.redirect(redirectUrl);
     } catch (error) {
-    res.status(500).json({ error });
+        //res.status(500).json({ error });
+        CustomError.generateError(
+            ErrorMessages.CAN_NOT_CREATE_SESSION,
+            500,
+            ErrorMessages.CAN_NOT_CREATE_SESSION
+        );
     }
 };
 
@@ -91,7 +98,7 @@ export const createD = async (req, res) => {
         res.redirect("/products");
 };
 
-    // SIGNUP - LOGIN - PASSPORT GOOGLE
+// SIGNUP - LOGIN - PASSPORT GOOGLE
 
 export const createE = async (req, res) => {
         '/auth/google',
@@ -124,7 +131,12 @@ export const createH = async (req, res) => {
         res.status(200).json({message: "Password updated"});
         res.status();
     }catch(error){
-        res.status(500).json({error});
+        //res.status(500).json({error});
+        CustomError.generateError(
+            ErrorMessages.CAN_NOT_CREATE_SESSION,
+            500,
+            ErrorMessages.CAN_NOT_CREATE_SESSION
+        );
     }
 };
 

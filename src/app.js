@@ -19,6 +19,7 @@ import "../src/DAL/DAO/fs/db/configDB.js";
 import config from "./config.js";
 import cors from "cors";
 import { generateProuct } from "./faker.js";
+import { errorMiddleware } from "./middlewares/errors.middleware.js";
 
 const app = express();
 
@@ -61,7 +62,7 @@ app.use("/", viewsRouter);
 
 app.get("/mockingproducts",(req, res) =>{
     const products = [];
-    for (let i=0; i<5; i++) {
+    for (let i=0; i<100; i++) {
         const product = generateProuct();
         products.push(product);
     }
@@ -71,3 +72,5 @@ app.get("/mockingproducts",(req, res) =>{
 app.listen(8080, () => {
     console.log("Escuchando puerto 8080");
 });
+
+app.use(errorMiddleware);
